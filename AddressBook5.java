@@ -141,13 +141,59 @@ public class AddressBook {
 		}
 	}
 
+	// adding multiple person details feature added.
+	public void addMultiplePersons() {
+		System.out.println("Enter how many contacts you want to add :- ");
+		int userWant = input.nextInt();
+		for (int i = 1; i <= userWant; i++) {
+			addContact();
+		}
+	}
+
 	public static void main(String[] args) {
 		System.out.println("--------------------Welcome To Address Book Program-----------------------");
 		AddressBook obj = new AddressBook();
-		obj.addContact(); // adding first contact
-		obj.addContact(); // adding second contact
-		obj.displayContacts(); // displaying contacts
-		obj.deleteContact(); // deleting contact
-		obj.displayContacts(); // displaying contacts after edited
+
+		System.out.print("Enter valid option to perform Address Book Application[1.Enter (or) 2.Exit] :- ");
+		int enterExit = input.nextInt();
+		if (enterExit == 1) {
+
+			while (enterExit != 2) {
+				System.out.println("Choose which operation you want to perform from below list :- ");
+				System.out.println("1.Add Contact.");
+				System.out.println("2.Edit Contact");
+				System.out.println("3.Delete Contact");
+				System.out.println("4.Display Address Book.");
+				System.out.println("5.Exit from the Application");
+
+				System.out.println("\nEnter your choice :- ");
+				int userChoice = input.nextInt();
+
+				switch (userChoice) {
+				case 1:
+					obj.addMultiplePersons();
+					break;
+				case 2:
+					obj.editContact();
+					break;
+				case 3:
+					obj.deleteContact();
+					break;
+				case 4:
+					obj.displayContacts();
+					break;
+				default:
+					System.out.println("Enter valid choice from the list...");
+				}
+				if (userChoice == 5) {
+					System.out.println("Successfully exited from the Address Book Application.");
+					break;
+				}
+			}
+		} else if (enterExit == 2) {
+			System.out.println("Successfully exited from the Address Book Application.");
+		} else {
+			System.out.println("Choose Valid option [1.Enter (or) 2.Exit]...");
+		}
 	}
 }
