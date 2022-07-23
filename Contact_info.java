@@ -1,6 +1,7 @@
 package com.addressbooksystem;
 
 public class Contact_info {
+	
 	String first_Name;
 	String last_Name;
 	String address;

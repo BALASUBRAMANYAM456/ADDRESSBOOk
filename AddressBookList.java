@@ -3,7 +3,6 @@ package com.addressbooksystem;
 import java.util.ArrayList;
 
 public class AddressBookList {
-	
 	String userInputBookName;
 	ArrayList<Contact_info> contact;
 

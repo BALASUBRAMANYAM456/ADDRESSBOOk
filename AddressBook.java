@@ -211,7 +211,7 @@ public class AddressBook {
 			System.out.println("OOPS! You aleady have AddressBook with same name.\n");
 			return;
 		}
-ṣ		
+		
 		AddressBookList addressBookObj = new AddressBookList(userInputBookName);
 		addressBookNameList.add(addressBookObj);
 
@@ -239,6 +239,42 @@ public class AddressBook {
 		}
 	}
 
+	/**
+	 * UC-8:- Ability to search Person in a City or State across the multiple
+	 * AddressBook.
+	 **/
+	public void searchPersonByCity() {
+		
+		System.out.print("\nEnter city to search person by city name :- ");
+		String searchCity = input.next();
+		
+		for (AddressBookList addressBook : addressBookNameList) {
+			for (Contact_info person : addressBook.contact) {
+				if (searchCity.equals(person.city)) {
+					System.out.println("Persons who are in same city " + "(" + searchCity + ") :- " + person.first_Name);
+				} else {
+					continue;
+				}
+			}
+		}
+	}
+	
+	public void searchPersonByState() {
+		
+		System.out.print("\nEnter State to search person by city name :- ");
+		String searchState = input.next();
+		
+		for (AddressBookList addressBook : addressBookNameList) {
+			for (Contact_info person : addressBook.contact) {
+				if (searchState.equals(person.state)) {
+					System.out.println("Persons who are in same state " + "(" + searchState + ") :- " + person.first_Name);
+				} else {
+					continue;
+				}
+			}
+		}
+	}
+	
 	// main method
 	public static void main(String[] args) {
 		System.out.println("--------------------Welcome To Address Book Program-----------------------");
@@ -254,8 +290,10 @@ public class AddressBook {
 				System.out.println("2.Edit Contact");
 				System.out.println("3.Delete Contact.");
 				System.out.println("4.Add new address book.");
-				System.out.println("5.Display Address Book");
-				System.out.println("6.Exit from the Application");
+				System.out.println("5.Display Address Book.");
+				System.out.println("6.Search person by City.");
+				System.out.println("7.Search person by State.");
+				System.out.println("8.Exit from the Application.");
 
 				System.out.println("\nEnter your choice :- ");
 				int userChoice = input.nextInt();
@@ -276,10 +314,16 @@ public class AddressBook {
 				case 5:
 					obj.displayAddressBook();
 					break;
+				case 6:
+					obj.searchPersonByCity();
+					break;
+				case 7:
+					obj.searchPersonByState();
+					break;
 				default:
 					System.out.println("Enter valid choice from the list...");
 				}
-				if (userChoice == 6) {
+				if (userChoice == 8) {
 					System.out.println("Successfully exited from the Address Book Application.");
 					break;
 				}
