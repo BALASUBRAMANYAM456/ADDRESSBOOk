@@ -200,7 +200,8 @@ public class AddressBook {
 		int userWant = input.nextInt();
 		for (int i = 1; i <= userWant; i++) {
 			addContact();
-		}	}
+		}
+	}
 
 	// UC-6:- Ability to add multiple address books to system
 	public void newAddressBook() {
@@ -291,6 +292,37 @@ public class AddressBook {
 		System.out.println(" ");
 	}
 	
+	/**
+	 * UC-10:- Ability to get number of contact persons i.e. count by City or State.
+	 **/
+	public void countByCity() {
+		System.out.println("Enter city name to count :- ");
+		String countCity = input.next();
+		int count = 0;
+		for (AddressBookList addressBook : addressBookNameList) {
+			for (Contact_info person : addressBook.contact) {
+				if(countCity.equals(person.city)) {
+					count++;
+				}
+			}
+		}
+		System.out.println("\nNumber of persons in same city " + "(" + countCity + ") :- " + count + ".\n");
+	}
+	
+	public void countByState() {
+		System.out.println("Enter state name to count :- ");
+		String countState = input.next();
+		int count = 0;
+		for (AddressBookList addressBook : addressBookNameList) {
+			for (Contact_info person : addressBook.contact) {
+				if(countState.equals(person.state)) {
+					count++;
+				}
+			}
+		}
+		System.out.println("\nNumber of persons in same state " + "(" + countState + ") :- " + count + ".\n");
+	}
+	
 	// main method
 	public static void main(String[] args) {
 		System.out.println("--------------------Welcome To Address Book Program-----------------------");
@@ -309,7 +341,9 @@ public class AddressBook {
 				System.out.println("5.Display Address Book.");
 				System.out.println("6.Search person by City.");
 				System.out.println("7.Search person by State.");
-				System.out.println("8.Exit from the Application.");
+				System.out.println("8.Count By City.");
+				System.out.println("9.count By State.");
+				System.out.println("10.Exit from the Application.");
 
 				System.out.println("\nEnter your choice :- ");
 				int userChoice = input.nextInt();
@@ -336,10 +370,16 @@ public class AddressBook {
 				case 7:
 					obj.searchPersonByState();
 					break;
+				case 8:
+					obj.countByCity();
+					break;
+				case 9:
+					obj.countByState();
+					break;
 				default:
 					System.out.println("Enter valid choice from the list...");
 				}
-				if (userChoice == 8) {
+				if (userChoice == 10) {
 					System.out.println("Successfully exited from the Address Book Application.");
 					break;
 				}
